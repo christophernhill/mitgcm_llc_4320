@@ -1,7 +1,7 @@
 %
 % Make plot of sub patches for experimentally splitting raw output for download
 % Plot shows bathymetry in native llc orientation and marks sub patches that are
-% 720 x 864 cells in horizontal size.
+% 540 x 1080 cells in horizontal size.
 % Each cell has a number that indicates a region that is used for breaking up
 % output into some manageable pieces.
 % A single sub path is about 2.5MB, an hourly series over a year is about 21GB.
