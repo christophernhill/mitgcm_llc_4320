@@ -17,3 +17,5 @@ To execute matlab step
 ```
 make subtile_coords.jpeg
 ```
+
+The binary bathymetry file for the LLC4320 can be downloaded from [here]( https://www.dropbox.com/sh/42f61xu5r0yiqhm/AADLE5f963SahYphAUah9E9Ra?dl=0 "Dropbox copy of bathy4320_g5_r4").
