@@ -8,3 +8,7 @@ Code related to accessing standard output size tiles
    *  ```matlab_make_tilemap/``` has matlab code to read a binary bathymetry file and produce a master
    jpeg file that shows the bathymetry split into numbered sub-tiles plotted on the default LLC
    layout.
+
+   * ```make_tilemap_webpage/``` has shell scripts that take the jpeg produced by the matlab code in 
+   ```matlab_make_tilemap/``` and create a set of per sub-tile images and thumbnails, and then generate
+   html that shows the images in the default LLC layout.
