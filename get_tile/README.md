@@ -5,6 +5,6 @@ Code related to accessing standard output size tiles
    to full resolution images that show the coordinate extents for the each sub-tile. LLC output can
    then be selected, extracted and downloaded by sub-tile.
 
-*  ```matlab_make_tilemap/``` has code to read a binary bathymetry file and produce a master
+   *  ```matlab_make_tilemap/``` has code to read a binary bathymetry file and produce a master
    jpeg file that shows the bathymetry split into numbered sub-tiles plotted on the default LLC
    layout.
