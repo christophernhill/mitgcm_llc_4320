@@ -11,6 +11,12 @@ nx=4320;
 nsby=8;
 nsbx=4;
 
+if isempty(getenv('INPUT_DIR'))
+ exit;
+end
+
+exit
+
 b=read_bathy('../grid/bathy4320_g5_r4',nx);
 eps=0.002;
 eps=0.000;
