@@ -12,3 +12,8 @@ Code related to accessing standard output size tiles
    * ```make_tilemap_webpage/``` has shell scripts that take the jpeg produced by the matlab code in 
    ```matlab_make_tilemap/``` and create a set of per sub-tile images and thumbnails, and then generate
    html that shows the images in the default LLC layout.
+
+To execute matlab step
+```
+make subtile_coords.jpeg
+```
