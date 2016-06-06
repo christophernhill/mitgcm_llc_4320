@@ -13,11 +13,19 @@ nsbx=4;
 
 if isempty(getenv('INPUT_DIR'))
  exit;
+else
+ idir=getenv('INPUT_DIR');
 end
 
-exit
+if isempty(getenv('OUTPUT_DIR'))
+ exit;
+else
+ odir=getenv('OUTPUT_DIR');
+end
 
-b=read_bathy('../grid/bathy4320_g5_r4',nx);
+ibfile=sprintf('%s/%s',idir,'bathy4320_g5_r4');
+
+b=read_bathy(ibfile,nx);
 eps=0.002;
 eps=0.000;
 fw=0.2-eps;
@@ -64,7 +72,8 @@ nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1);
 np=np-1;gca=subplot('Position',[0.0 0.0 fw fh]);imagesc(b(:,:,np)');set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
 nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1);
 
+cd(odir)
 print('-djpeg100','-r600','subtile_coords.jpeg');
 % print('-depsc2','-r2400','subtile_coords.ps')
-
+exit
 

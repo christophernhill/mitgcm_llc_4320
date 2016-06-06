@@ -20,9 +20,9 @@
 #
 
 MATLAB_CMD=/Applications/MATLAB_R2015b.app/bin/matlab -nodisplay -nodesktop
-INPUT_DIR=/Users/chrishill/projects/llc_extract/tools
-OUTPUT_DIR=/Users/chrishill/projects/llc_extract/output
-SRC_DIR=/Users/chrishill/projects/llc_extract/git/mitgcm_llc_4320
+INPUT_DIR=~/projects/llc_extract/grid
+OUTPUT_DIR=~/projects/llc_extract/output
+SRC_DIR=~/projects/llc_extract/git/mitgcm_llc_4320
 PLOT_BATHY_CMD_PATH=/get_tile/matlab_make_tilemap/plot_bathy.m
 
 default: 
@@ -31,7 +31,7 @@ default:
 	@ echo "Input directory = "$(INPUT_DIR)
 	@ echo "Output directory = "$(OUTPUT_DIR)
 	@ echo "Targets"
-	@ echo "make pnm_file - Run matlab to write pnm to output directory."
+	@ echo "make subtile_coords.jpeg - Run matlab to write master jpeg to output directory."
 
-pnm_file:
+subtile_coords.jpeg:
 	INPUT_DIR=$(INPUT_DIR) OUTPUT_DIR=$(OUTPUT_DIR) $(MATLAB_CMD) -r "run $(SRC_DIR)$(PLOT_BATHY_CMD_PATH)"
