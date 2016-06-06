@@ -23,7 +23,7 @@ MATLAB_CMD=/Applications/MATLAB_R2015b.app/bin/matlab -nodisplay -nodesktop
 INPUT_DIR=~/projects/llc_extract/grid
 OUTPUT_DIR=~/projects/llc_extract/output
 SRC_DIR=~/projects/llc_extract/git/mitgcm_llc_4320
-PLOT_BATHY_CMD_PATH=/get_tile/matlab_make_tilemap/plot_bathy.m
+PLOT_BATHY_CMD_PATH=/get_subtile/matlab_make_tilemap/plot_bathy.m
 
 default: 
 	@ echo "Generate tiled .html file"
