@@ -33,44 +33,86 @@ fh=0.2-eps;
 clf;hold on;
 set(gcf,'PaperSize',[36 36]);
 set(gcf,'PaperPosition',[0 0 36 36]);
-np=13;  gca=subplot('Position',[0.8 0.8 fw fh]);imagesc(b(:,:,np)');set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
-nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1);
+% 13 12 11 10 9 8
+% 12 11 10  9 8 7
+np=13;
+gca=subplot('Position',[0.8 0.8 fw fh]);
+imagesc(b(:,:,np)');
+set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
+nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1,np-1);
 
-np=np-1;gca=subplot('Position',[0.6 0.8 fw fh]);imagesc(b(:,:,np)');set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
-nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1);
+np=np-1;
+gca=subplot('Position',[0.6 0.8 fw fh]);
+imagesc(b(:,:,np)');
+set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
+nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1,np-1);
 
-np=np-1;gca=subplot('Position',[0.4 0.8 fw fh]);imagesc(b(:,:,np)');set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
-nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1);
+np=np-1;
+gca=subplot('Position',[0.4 0.8 fw fh]);
+imagesc(b(:,:,np)');
+set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
+nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1,np-1);
 
-np=np-1;gca=subplot('Position',[0.8 0.6 fw fh]);imagesc(b(:,:,np)');set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
-nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1);
+np=np-1;
+gca=subplot('Position',[0.8 0.6 fw fh]);
+imagesc(b(:,:,np)');
+set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
+nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1,np-1);
 
-np=np-1;gca=subplot('Position',[0.6 0.6 fw fh]);imagesc(b(:,:,np)');set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
-nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1);
+np=np-1;
+gca=subplot('Position',[0.6 0.6 fw fh]);
+imagesc(b(:,:,np)');
+set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
+nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1,np-1);
 
-np=np-1;gca=subplot('Position',[0.4 0.6 fw fh]);imagesc(b(:,:,np)');set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
-nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1);
+np=np-1;
+gca=subplot('Position',[0.4 0.6 fw fh]);
+imagesc(b(:,:,np)');
+set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
+nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1,np-1);
 
-np=np-1;gca=subplot('Position',[0.2 0.6 fw fh]);imagesc(b(:,:,np)');set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
-nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1);
+% Polar cap
+np=np-1;
+gca=subplot('Position',[0.2 0.6 fw fh]);
+imagesc(b(:,:,np)');
+set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
+nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1,np-1);
 
-np=np-1;gca=subplot('Position',[0.2 0.4 fw fh]);imagesc(b(:,:,np)');set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
-nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1);
+np=np-1;
+gca=subplot('Position',[0.2 0.4 fw fh]);
+imagesc(b(:,:,np)');
+set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
+nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1,np-1);
 
-np=np-1;gca=subplot('Position',[0.2 0.2 fw fh]);imagesc(b(:,:,np)');set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
-nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1);
+np=np-1;
+gca=subplot('Position',[0.2 0.2 fw fh]);
+imagesc(b(:,:,np)');
+set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
+nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1,np-1);
 
-np=np-1;gca=subplot('Position',[0.2 0.0 fw fh]);imagesc(b(:,:,np)');set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
-nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1);
+np=np-1;
+gca=subplot('Position',[0.2 0.0 fw fh]);
+imagesc(b(:,:,np)');
+set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
+nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1,np-1);
 
-np=np-1;gca=subplot('Position',[0.0 0.4 fw fh]);imagesc(b(:,:,np)');set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
-nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1);
+np=np-1;
+gca=subplot('Position',[0.0 0.4 fw fh]);
+imagesc(b(:,:,np)');
+set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
+nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1,np-1);
 
-np=np-1;gca=subplot('Position',[0.0 0.2 fw fh]);imagesc(b(:,:,np)');set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
-nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1);
+np=np-1;
+gca=subplot('Position',[0.0 0.2 fw fh]);
+imagesc(b(:,:,np)');
+set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
+nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1,np-1);
 
-np=np-1;gca=subplot('Position',[0.0 0.0 fw fh]);imagesc(b(:,:,np)');set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
-nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1);
+np=np-1;
+gca=subplot('Position',[0.0 0.0 fw fh]);
+imagesc(b(:,:,np)');
+set(gca,'YTick',[],'XTick',[]);caxis([-10000 0]);axis xy;hold on
+nt1=(np-1)*nsby*nsbx+1;draw_numbered_subtiles(nt1,np-1);
 
 cd(odir)
 print('-djpeg100','-r600','subtile_coords.jpeg');
