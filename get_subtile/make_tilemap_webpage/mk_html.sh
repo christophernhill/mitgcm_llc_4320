@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ${odir}
+
 echo "<html>"
 cat <<'EOF'
 <head>
@@ -70,91 +72,15 @@ echo "</td>"
 echo "<td>"
 echo "<table>"
 
-n0=349;
-for j in $(seq 0 7); do
+n0=405;
+for j in $(seq 0 15); do
  echo "<tr>"
- for i in $(seq 0  3); do
+ for i in $(seq 0  11); do
   fsuf=`printf "%3.3d" $(( ${i} + ${n0} ))`
   echo "<td> <a href=\"subpanel1080x540_llc4320_map_${fsuf}.jpeg\"><img src=\"subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
  done
  echo "</tr>"
- n0=$(($n0-4))
-done
-n0=253;
-for j in $(seq 0 7); do
- echo "<tr>"
- for i in $(seq 0  3); do
-  fsuf=`printf "%3.3d" $(( ${i} + ${n0} ))`
-  echo "<td> <a href=\"subpanel1080x540_llc4320_map_${fsuf}.jpeg\"><img src=\"subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
- done
- echo "</tr>"
- n0=$(($n0-4))
-done
-for j in $(seq 0 23); do
- echo "<tr>"
-  echo "<td> <img src=\"white_pad.jpeg\"> </td>"
- echo "</tr>"
-done
-# </tr>
-
-echo "</table>"
-echo "</td>"
-
-echo "<td>"
-echo "<table>"
-
-n0=381;
-for j in $(seq 0 7); do
- echo "<tr>"
- for i in $(seq 0  3); do
-  fsuf=`printf "%3.3d" $(( ${i} + ${n0} ))`
-  echo "<td> <a href=\"subpanel1080x540_llc4320_map_${fsuf}.jpeg\"><img src=\"subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
- done
- echo "</tr>"
- n0=$(($n0-4))
-done
-n0=285;
-for j in $(seq 0 7); do
- echo "<tr>"
- for i in $(seq 0  3); do
-  fsuf=`printf "%3.3d" $(( ${i} + ${n0} ))`
-  echo "<td> <a href=\"subpanel1080x540_llc4320_map_${fsuf}.jpeg\"><img src=\"subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
- done
- echo "</tr>"
- n0=$(($n0-4))
-done
-for j in $(seq 0 23); do
- echo "<tr>"
-  echo "<td> <img src=\"white_pad.jpeg\"> </td>"
- echo "</tr>"
-done
-# </tr>
-
-echo "</table>"
-echo "</td>"
-
-echo "<td>"
-echo "<table>"
-
-n0=413;
-for j in $(seq 0 7); do
- echo "<tr>"
- for i in $(seq 0  3); do
-  fsuf=`printf "%3.3d" $(( ${i} + ${n0} ))`
-  echo "<td> <a href=\"subpanel1080x540_llc4320_map_${fsuf}.jpeg\"><img src=\"subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
- done
- echo "</tr>"
- n0=$(($n0-4))
-done
-n0=317;
-for j in $(seq 0 7); do
- echo "<tr>"
- for i in $(seq 0  3); do
-  fsuf=`printf "%3.3d" $(( ${i} + ${n0} ))`
-  echo "<td> <a href=\"subpanel1080x540_llc4320_map_${fsuf}.jpeg\"><img src=\"subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
- done
- echo "</tr>"
- n0=$(($n0-4))
+ n0=$(($n0-12))
 done
 for j in $(seq 0 23); do
  echo "<tr>"

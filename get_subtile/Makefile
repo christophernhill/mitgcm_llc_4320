@@ -26,6 +26,8 @@ SRC_DIR=~/projects/llc_extract/git/mitgcm_llc_4320
 PLOT_BATHY_CMD_PATH=/get_subtile/matlab_make_tilemap/plot_bathy.m
 MAKE_TILE_JPEG_CMD_PATH=/get_subtile/make_tilemap_webpage/mk_panel_jpegs.sh
 MAKE_THUMBS_CMD_PATH=/get_subtile/make_tilemap_webpage/mk_thumbs.sh
+MAKE_HTML_CMD_PATH=/get_subtile/make_tilemap_webpage/mk_html.sh
+HTML_OUT=$(OUTPUT_DIR)/x.html
 
 default: 
 	@ echo "Generate tiled .html file"
@@ -45,3 +47,6 @@ tile_jpegs:
 
 thumbs:
 	idir=$(OUTPUT_DIR) odir=$(OUTPUT_DIR) $(SRC_DIR)$(MAKE_THUMBS_CMD_PATH)
+
+html:
+	idir=$(OUTPUT_DIR) odir=$(OUTPUT_DIR) $(SRC_DIR)$(MAKE_HTML_CMD_PATH) > $(HTML_OUT)
