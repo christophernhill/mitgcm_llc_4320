@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 #
+cd ${odir}
 fl=`ls -1 subpanel1080x540_llc4320_map_[0-9][0-9][0-9].jpeg`
 # cat subpanel1080x540_llc4320_map_415.jpeg | jpegtopnm | pnmscale 0.2 | pnmtojpeg -q 30 > subpanel1080x540_llc4320_map_415_thumb.jpeg
 for f in ${fl} ; do
