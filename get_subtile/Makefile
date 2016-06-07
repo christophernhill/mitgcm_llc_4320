@@ -24,6 +24,7 @@ INPUT_DIR=~/projects/llc_extract/grid
 OUTPUT_DIR=~/projects/llc_extract/output
 SRC_DIR=~/projects/llc_extract/git/mitgcm_llc_4320
 PLOT_BATHY_CMD_PATH=/get_subtile/matlab_make_tilemap/plot_bathy.m
+MAKE_TILE_JPEG_CMD_PATH=/get_subtile/make_tilemap_webpage/mk_panel_jpegs.sh
 
 default: 
 	@ echo "Generate tiled .html file"
@@ -32,6 +33,11 @@ default:
 	@ echo "Output directory = "$(OUTPUT_DIR)
 	@ echo "Targets"
 	@ echo "make subtile_coords.jpeg - Run matlab to write master jpeg to output directory."
+	@ echo "make tile_jpegs          - Run Netpbm commands to create individual tile jpeg images."
 
 subtile_coords.jpeg:
 	INPUT_DIR=$(INPUT_DIR) OUTPUT_DIR=$(OUTPUT_DIR) $(MATLAB_CMD) -r "run $(SRC_DIR)$(PLOT_BATHY_CMD_PATH)"
+	cd $(OUTPUT_DIR); cat subtile_coords.jpeg | jpegtopnm > subtile_coords.pnm
+
+tile_jpegs:
+	idir=$(OUTPUT_DIR) odir=$(OUTPUT_DIR) $(SRC_DIR)$(MAKE_TILE_JPEG_CMD_PATH) | bash -e

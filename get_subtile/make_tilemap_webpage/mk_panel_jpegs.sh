@@ -6,79 +6,56 @@
 #
 npsy=540;
 npsx=1080;
-npy=8;npym1=$((${npy}-1));
-npx=4;npxm1=$((${npx}-1));
-itile=0;
-for np in $(seq 0 12); do
- for ny in $(seq 0 ${npym1}); do
-  for nx in $(seq 0 ${npxm1}); do
-   itilestr=`printf "%3.3d" $(($itile+1))`
+nx=4320;
 
-   if [ ${np} -lt 3 ]; then
-    lval=$((0 + ${nx}*${npsx}))
-    bval=$((21599 - ${npsy}*${ny} - ${npsy}*${npy}*${np}))
-    echo 'cat subpanel1080x540_llc4320_map.pnm |' \
-         "pamcut -left="${lval} "-bottom="${bval} "-width="${npsx} "-height="${npsy} \
-         '|' 'pnmtojpeg -quality=100 > subpanel1080x540_llc4320_map_'${itilestr}".jpeg"
-   fi
-
-   if [ ${np} -gt 2 ] && [ ${np} -lt 7 ]; then
-    lval=$((4320 + ${nx}*${npsx}))
-    bval=$((21599 - ${npsy}*${ny} - ${npsy}*${npy}*$((${np}-3))))
-    echo 'cat subpanel1080x540_llc4320_map.pnm |' \
-         "pamcut -left="${lval} "-bottom="${bval} "-width="${npsx} "-height="${npsy} \
-         '|' 'pnmtojpeg -quality=100 > subpanel1080x540_llc4320_map_'${itilestr}".jpeg"
-   fi
-
-   if [ ${np} -eq 7 ]; then
-    lval=$((     0 + 2*${npx}*${npsx} + ${nx}*${npsx} ))
-    bval=$(( 21599 - 3*${npsy}*${npy} - ${ny}*${npsy} ))
-    echo 'cat subpanel1080x540_llc4320_map.pnm |' \
-         "pamcut -left="${lval} "-bottom="${bval} "-width="${npsx} "-height="${npsy} \
-         '|' 'pnmtojpeg -quality=100 > subpanel1080x540_llc4320_map_'${itilestr}".jpeg"
-   fi
-
-   if [ ${np} -eq 8 ]; then
-    lval=$((     0 + 3*${npx}*${npsx} + ${nx}*${npsx} ))
-    bval=$(( 21599 - 3*${npsy}*${npy} - ${ny}*${npsy} ))
-    echo 'cat subpanel1080x540_llc4320_map.pnm |' \
-         "pamcut -left="${lval} "-bottom="${bval} "-width="${npsx} "-height="${npsy} \
-         '|' 'pnmtojpeg -quality=100 > subpanel1080x540_llc4320_map_'${itilestr}".jpeg"
-   fi
-
-   if [ ${np} -eq 9 ]; then
-    lval=$((     0 + 4*${npx}*${npsx} + ${nx}*${npsx} ))
-    bval=$(( 21599 - 3*${npsy}*${npy} - ${ny}*${npsy} ))
-    echo 'cat subpanel1080x540_llc4320_map.pnm |' \
-         "pamcut -left="${lval} "-bottom="${bval} "-width="${npsx} "-height="${npsy} \
-         '|' 'pnmtojpeg -quality=100 > subpanel1080x540_llc4320_map_'${itilestr}".jpeg"
-   fi
-
-   if [ ${np} -eq 10 ]; then
-    lval=$((     0 + 2*${npx}*${npsx} + ${nx}*${npsx} ))
-    bval=$(( 21599 - 4*${npsy}*${npy} - ${ny}*${npsy} ))
-    echo 'cat subpanel1080x540_llc4320_map.pnm |' \
-         "pamcut -left="${lval} "-bottom="${bval} "-width="${npsx} "-height="${npsy} \
-         '|' 'pnmtojpeg -quality=100 > subpanel1080x540_llc4320_map_'${itilestr}".jpeg"
-   fi
-
-   if [ ${np} -eq 11 ]; then
-    lval=$((     0 + 3*${npx}*${npsx} + ${nx}*${npsx} ))
-    bval=$(( 21599 - 4*${npsy}*${npy} - ${ny}*${npsy} ))
-    echo 'cat subpanel1080x540_llc4320_map.pnm |' \
-         "pamcut -left="${lval} "-bottom="${bval} "-width="${npsx} "-height="${npsy} \
-         '|' 'pnmtojpeg -quality=100 > subpanel1080x540_llc4320_map_'${itilestr}".jpeg"
-   fi
-
-   if [ ${np} -eq 12 ]; then
-    lval=$((     0 + 4*${npx}*${npsx} + ${nx}*${npsx} ))
-    bval=$(( 21599 - 4*${npsy}*${npy} - ${ny}*${npsy} ))
-    echo 'cat subpanel1080x540_llc4320_map.pnm |' \
-         "pamcut -left="${lval} "-bottom="${bval} "-width="${npsx} "-height="${npsy} \
-         '|' 'pnmtojpeg -quality=100 > subpanel1080x540_llc4320_map_'${itilestr}".jpeg"
-   fi
-
+itile=0
+for fn in $(seq 1 5); do
+ if [ ${fn} -eq 1 ] || [ ${fn} -eq 2 ]; then
+  nxf=$((${nx}  ))
+  nyf=$((${nx}*3))
+ fi
+ if [ ${fn} -eq 3 ]; then
+  nxf=$((${nx}  ))
+  nyf=$((${nx}  ))
+ fi
+ if [ ${fn} -eq 4 ] || [ ${fn} -eq 5 ]; then
+  nxf=$((${nx}*3))
+  nyf=$((${nx}  ))
+ fi
+ if [ ${fn} -eq 1 ]; then
+  bval0=$((${nx}*5-1))
+  lval0=0;
+ fi
+ if [ ${fn} -eq 2 ]; then
+  bval0=$((${nx}*5-1))
+  lval0=$((${nx}));
+ fi
+ if [ ${fn} -eq 3 ]; then
+  bval0=$((${nx}*2-1))
+  lval0=$((${nx}));
+ fi
+ if [ ${fn} -eq 4 ]; then
+  bval0=$((${nx}*2-1))
+  lval0=$((${nx}*2));
+ fi
+ if [ ${fn} -eq 5 ]; then
+  bval0=$((${nx}-1))
+  lval0=$((${nx}*2));
+ fi
+ npx=$((${nxf}/${npsx}))
+ npy=$((${nyf}/${npsy}))
+ # echo "Face "${fn}" npx="${npx}" npy="${npy}" lval0="${lval0}" bval0="${bval0}
+ 
+ for nty in $(seq 0 $((npy-1))); do
+  for ntx in $(seq 0 $((npx-1))); do
    itile=$(($itile+1))
+   lval=$(($lval0 + ${ntx}*${npsx}))
+   bval=$(($bval0 - ${nty}*${npsy}))
+   # echo "tile ="${itile}" lval="${lval}" bval="${bval}
+   itilestr=`printf "%3.3d" $(($itile))`
+   echo "cat ${idir}/subtile_coords.pnm " \
+        "| pamcut -left="${lval} "-bottom="${bval} "-width="${npsx} "-height="${npsy} \
+        '|' 'pnmtojpeg -quality=100 > '${odir}'/subpanel1080x540_llc4320_map_'${itilestr}".jpeg"
   done
  done
 done
