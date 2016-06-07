@@ -37,6 +37,15 @@ default:
 	@ echo "Targets"
 	@ echo "make subtile_coords.jpeg - Run matlab to write master jpeg to output directory."
 	@ echo "make tile_jpegs          - Run Netpbm commands to create individual tile jpeg images."
+	@ echo "make thumbs              - Run Netpbm commands to create thumbnail tile jpeg images."
+	@ echo "make html                - Run commands to create html table layout with hyperlinks."
+	@ echo "make all                 - Run all commands in sqeuence."
+
+all: 
+	make subtile_coords.jpeg
+	make tile_jpegs
+	make thumbs
+	make html
 
 subtile_coords.jpeg:
 	INPUT_DIR=$(INPUT_DIR) OUTPUT_DIR=$(OUTPUT_DIR) $(MATLAB_CMD) -r "run $(SRC_DIR)$(PLOT_BATHY_CMD_PATH)"
