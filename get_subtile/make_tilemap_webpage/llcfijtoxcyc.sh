@@ -110,6 +110,8 @@ fi
 tfnam="tile"`printf '%3.3d' $nfac`".mitgrid"
 # echo ${tfnam}
 
-degLon=`( dd if=${gd}/${tfnam} skip=${nskipLon} bs=8 count=1 ) 2> /dev/null |  awk '{split($0, chars, "");for(i=8;i>0;i=i-1){printf("%c",chars[i])}}' | od -t fD | tail -2 | head -1 | awk '{print $2}'`
-degLat=`( dd if=${gd}/${tfnam} skip=${nskipLat} bs=8 count=1 ) 2> /dev/null |  awk '{split($0, chars, "");for(i=8;i>0;i=i-1){printf("%c",chars[i])}}' | od -t fD | tail -2 | head -1 | awk '{print $2}'`
+degLon=`( dd if=${gd}/${tfnam} skip=${nskipLon} bs=8 count=1 ) 2> /dev/null |  \
+          LC_ALL=C sed s'/\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)/\8\7\6\5\4\3\2\1/' | od -t fD | tail -2 | head -1 | awk '{print $2}'`
+degLat=`( dd if=${gd}/${tfnam} skip=${nskipLat} bs=8 count=1 ) 2> /dev/null |  \
+          LC_ALL=C sed s'/\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)/\8\7\6\5\4\3\2\1/' | od -t fD | tail -2 | head -1 | awk '{print $2}'`
 echo $degLon","$degLat
