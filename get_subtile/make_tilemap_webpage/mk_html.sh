@@ -125,6 +125,13 @@ for fn in $(seq 1 5); do
  for nty in $(seq 0 $((npy-1))); do
   for ntx in $(seq 0 $((npx-1))); do
    itile=$(($itile+1))
+   itilestr=`printf "%3.3d" $(($itile))`
+   (
+   echo "<html>"
+   echo "<head>"
+   echo "</head>"
+   echo "<body>"
+   echo "<table>"
    ilof=$((${ntx}*${npsx}+1))
    ihif=$((${ilof}+${npsx}-1))
    jlof=$((${nty}*${npsy}+1))
@@ -132,54 +139,48 @@ for fn in $(seq 1 5); do
 
    echo "<tr>"
    echo "<td>"
-   echo "F"${fn}":("${ilof}","${jhif}")"
+   echo "LLC Face "${fn}"</br>"
+   echo "(i<sub>face</sub>,j<sub>face</sub>)=("${ilof}","${jhif}")"
    echo "</td>"
    echo "<td>"
    echo "&nbsp;"
    echo "</td>"
    echo "<td>"
-   echo "F"${fn}":("${ihif}","${jhif}")"
-   echo "</td>"
-   echo "</tr>"
-
-   itilestr=`printf "%3.3d" $(($itile))`
-   echo "<tr>"
-   echo "<td>"
-   echo "&nbsp;"
-   echo "</td>"
-   echo "<td>"
-   echo "tile =subpanel1080x540_llc4320_map_"${itilestr}".jpeg"
-   echo "</td>"
-   echo "<td>"
-   echo "&nbsp;"
+   echo "LLC Face "${fn}"</br>"
+   echo "(i<sub>face</sub>,j<sub>face</sub>)=("${ihif}","${jhif}")"
    echo "</td>"
    echo "</tr>"
 
    echo "<tr>"
    echo "<td>"
-   echo "F"${fn}":("${ilof}","${jlof}")"
-   echo "</td>"
-   echo "<td>"
    echo "&nbsp;"
    echo "</td>"
    echo "<td>"
-   echo "F"${fn}":("${ihif}","${jlof}")"
+   echo "<img src=subpanel1080x540_llc4320_map_"${itilestr}".jpeg>"
+   echo "</td>"
+   echo "<td>"
+   echo "&nbsp;"
    echo "</td>"
    echo "</tr>"
 
    echo "<tr>"
    echo "<td>"
-   echo "-----"
+   echo "LLC Face "${fn}"</br>"
+   echo "(i<sub>face</sub>,j<sub>face</sub>)=("${ilof}","${jlof}")"
    echo "</td>"
    echo "<td>"
-   echo "-----"
+   echo "&nbsp;"
    echo "</td>"
    echo "<td>"
-   echo "-----"
+   echo "LLC Face "${fn}"</br>"
+   echo "(i<sub>face</sub>,j<sub>face</sub>)=("${ihif}","${jlof}")"
    echo "</td>"
    echo "</tr>"
 
-   itilestr=`printf "%3.3d" $(($itile))`
+   echo "</body>"
+   echo "</html>"
+
+   ) > "subpanel1080x540_llc4320_map_"${itilestr}".html"
   done
  done
 done

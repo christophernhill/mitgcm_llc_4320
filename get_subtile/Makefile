@@ -20,7 +20,7 @@
 #
 
 MATLAB_CMD=/Applications/MATLAB_R2015b.app/bin/matlab -nodisplay -nodesktop
-INPUT_DIR=~/projects/llc_extract/grid
+GRID_INPUT_DIR=~/projects/llc_extract/grid
 OUTPUT_DIR=~/projects/llc_extract/output
 SRC_DIR=~/projects/llc_extract/git/mitgcm_llc_4320
 PLOT_BATHY_CMD_PATH=/get_subtile/matlab_make_tilemap/plot_bathy.m
@@ -32,7 +32,7 @@ HTML_OUT=$(OUTPUT_DIR)/x.html
 default: 
 	@ echo "Generate tiled .html file"
 	@ echo "MATLAB command = "$(MATLAB_CMD)
-	@ echo "Input directory = "$(INPUT_DIR)
+	@ echo "Input directory = "$(GRID_INPUT_DIR)
 	@ echo "Output directory = "$(OUTPUT_DIR)
 	@ echo "Targets"
 	@ echo "make subtile_coords.jpeg - Run matlab to write master jpeg to output directory."
@@ -48,7 +48,7 @@ all:
 	make html
 
 subtile_coords.jpeg:
-	INPUT_DIR=$(INPUT_DIR) OUTPUT_DIR=$(OUTPUT_DIR) $(MATLAB_CMD) -r "run $(SRC_DIR)$(PLOT_BATHY_CMD_PATH)"
+	INPUT_DIR=$(GRID_INPUT_DIR) OUTPUT_DIR=$(OUTPUT_DIR) $(MATLAB_CMD) -r "run $(SRC_DIR)$(PLOT_BATHY_CMD_PATH)"
 	cd $(OUTPUT_DIR); cat subtile_coords.jpeg | jpegtopnm > subtile_coords.pnm
 
 tile_jpegs:
@@ -58,4 +58,4 @@ thumbs:
 	idir=$(OUTPUT_DIR) odir=$(OUTPUT_DIR) $(SRC_DIR)$(MAKE_THUMBS_CMD_PATH)
 
 html:
-	idir=$(OUTPUT_DIR) odir=$(OUTPUT_DIR) $(SRC_DIR)$(MAKE_HTML_CMD_PATH) > $(HTML_OUT)
+	gdir=$(GRID_INPUT_DIR) idir=$(OUTPUT_DIR) odir=$(OUTPUT_DIR) $(SRC_DIR)$(MAKE_HTML_CMD_PATH) > $(HTML_OUT)
