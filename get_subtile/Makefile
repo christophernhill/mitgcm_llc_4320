@@ -27,6 +27,7 @@ PLOT_BATHY_CMD_PATH=/get_subtile/matlab_make_tilemap/plot_bathy.m
 MAKE_TILE_JPEG_CMD_PATH=/get_subtile/make_tilemap_webpage/mk_panel_jpegs.sh
 MAKE_THUMBS_CMD_PATH=/get_subtile/make_tilemap_webpage/mk_thumbs.sh
 MAKE_HTML_CMD_PATH=/get_subtile/make_tilemap_webpage/mk_html.sh
+GET_LL_CMD_PATH=/get_subtile/make_tilemap_webpage/llcfijtoxcyc.sh
 HTML_OUT=$(OUTPUT_DIR)/x.html
 
 default: 
@@ -58,4 +59,4 @@ thumbs:
 	idir=$(OUTPUT_DIR) odir=$(OUTPUT_DIR) $(SRC_DIR)$(MAKE_THUMBS_CMD_PATH)
 
 html:
-	gdir=$(GRID_INPUT_DIR) idir=$(OUTPUT_DIR) odir=$(OUTPUT_DIR) $(SRC_DIR)$(MAKE_HTML_CMD_PATH) > $(HTML_OUT)
+	llgetcmd=$(SRC_DIR)$(GET_LL_CMD_PATH) gdir=$(GRID_INPUT_DIR) idir=$(OUTPUT_DIR) odir=$(OUTPUT_DIR) $(SRC_DIR)$(MAKE_HTML_CMD_PATH) > $(HTML_OUT)

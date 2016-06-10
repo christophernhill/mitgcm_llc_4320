@@ -102,7 +102,20 @@ if [ $nfac -eq 1 ]; then
  nskipLat=$(( ($jface-1)*($nrgb+1)+$iface-1 +($nrgb+1)*(($nrgb*3)+1) ))
 fi
 if [ $nfac -eq 2 ]; then
- echo ${nfac}
+ nskipLon=$(( ($jface-1)*($nrgb+1)+$iface-1                          ))
+ nskipLat=$(( ($jface-1)*($nrgb+1)+$iface-1 +($nrgb+1)*(($nrgb*3)+1) ))
+fi
+if [ $nfac -eq 3 ]; then
+ nskipLon=$(( ($jface-1)*($nrgb+1)+$iface-1                          ))
+ nskipLat=$(( ($jface-1)*($nrgb+1)+$iface-1 +($nrgb+1)*($nrgb+1)     ))
+fi
+if [ $nfac -eq 4 ]; then
+ nskipLon=$(( ($jface-1)*(($nrgb*3)+1)+$iface-1                           ))
+ nskipLat=$(( ($jface-1)*(($nrgb*3)+1)+$iface-1 + ($nrgb+1)*(($nrgb*3)+1) ))
+fi
+if [ $nfac -eq 5 ]; then
+ nskipLon=$(( ($jface-1)*(($nrgb*3)+1)+$iface-1                           ))
+ nskipLat=$(( ($jface-1)*(($nrgb*3)+1)+$iface-1 + ($nrgb+1)*(($nrgb*3)+1) ))
 fi
 
 # echo $nskipLon
@@ -111,7 +124,9 @@ tfnam="tile"`printf '%3.3d' $nfac`".mitgrid"
 # echo ${tfnam}
 
 degLon=`( dd if=${gd}/${tfnam} skip=${nskipLon} bs=8 count=1 ) 2> /dev/null |  \
-          LC_ALL=C sed s'/\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)/\8\7\6\5\4\3\2\1/' | od -t fD | tail -2 | head -1 | awk '{print $2}'`
+          LC_ALL=C sed s'/\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)/\8\7\6\5\4\3\2\1/' | ( dd bs=8 count=1 ) 2> /dev/null | od -t fD | tail -2 | head -1 | awk '{print $2}'`
+degLon=`printf '%4.2f' ${degLon}`
 degLat=`( dd if=${gd}/${tfnam} skip=${nskipLat} bs=8 count=1 ) 2> /dev/null |  \
-          LC_ALL=C sed s'/\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)/\8\7\6\5\4\3\2\1/' | od -t fD | tail -2 | head -1 | awk '{print $2}'`
+          LC_ALL=C sed s'/\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)\(.\)/\8\7\6\5\4\3\2\1/' | ( dd bs=8 count=1 ) 2> /dev/null | od -t fD | tail -2 | head -1 | awk '{print $2}'`
+degLat=`printf '%4.2f' ${degLat}`
 echo $degLon","$degLat

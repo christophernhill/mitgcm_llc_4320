@@ -94,6 +94,7 @@ echo "</td>"
 
 echo "</tr>"
 echo "</table>"
+echo "</div>"
 echo "</body>"
 echo "</html>"
 
@@ -104,7 +105,6 @@ nx=4320;
 
 
 itile=0
-echo "<table>"
 for fn in $(seq 1 5); do
  if [ ${fn} -eq 1 ] || [ ${fn} -eq 2 ]; then
   nxf=$((${nx}  ))
@@ -131,23 +131,31 @@ for fn in $(seq 1 5); do
    echo "<head>"
    echo "</head>"
    echo "<body>"
-   echo "<table>"
+   echo "<div width=\"100%\">"
+   echo "<table width=\"95%\" align=\"center\">"
    ilof=$((${ntx}*${npsx}+1))
    ihif=$((${ilof}+${npsx}-1))
    jlof=$((${nty}*${npsy}+1))
    jhif=$((${jlof}+${npsy}-1))
+   # ./make_tilemap_webpage/llcfijtoxcyc.sh ../../../grid 4320 1 4320 8640
+   llstr_tl=`${llgetcmd} ${gdir} ${nx} ${fn} ${ilof} ${jhif} | tail -1`
+   llstr_bl=`${llgetcmd} ${gdir} ${nx} ${fn} ${ilof} ${jlof} | tail -1`
+   llstr_tr=`${llgetcmd} ${gdir} ${nx} ${fn} ${ihif} ${jhif} | tail -1`
+   llstr_br=`${llgetcmd} ${gdir} ${nx} ${fn} ${ihif} ${jlof} | tail -1`
 
    echo "<tr>"
    echo "<td>"
    echo "LLC Face "${fn}"</br>"
-   echo "(i<sub>face</sub>,j<sub>face</sub>)=("${ilof}","${jhif}")"
+   echo "(i<sub>face</sub>,j<sub>face</sub>)=("${ilof}","${jhif}")</br>"
+   echo "(Lon<sub>E</sub>,Lat)=("$llstr_tl")"
    echo "</td>"
    echo "<td>"
    echo "&nbsp;"
    echo "</td>"
    echo "<td>"
    echo "LLC Face "${fn}"</br>"
-   echo "(i<sub>face</sub>,j<sub>face</sub>)=("${ihif}","${jhif}")"
+   echo "(i<sub>face</sub>,j<sub>face</sub>)=("${ihif}","${jhif}")</br>"
+   echo "(Lon<sub>E</sub>,Lat)=("$llstr_tr")"
    echo "</td>"
    echo "</tr>"
 
@@ -156,7 +164,7 @@ for fn in $(seq 1 5); do
    echo "&nbsp;"
    echo "</td>"
    echo "<td>"
-   echo "<img src=subpanel1080x540_llc4320_map_"${itilestr}".jpeg>"
+   echo "<img width=\"100%\" src=subpanel1080x540_llc4320_map_"${itilestr}".jpeg>"
    echo "</td>"
    echo "<td>"
    echo "&nbsp;"
@@ -166,16 +174,21 @@ for fn in $(seq 1 5); do
    echo "<tr>"
    echo "<td>"
    echo "LLC Face "${fn}"</br>"
-   echo "(i<sub>face</sub>,j<sub>face</sub>)=("${ilof}","${jlof}")"
+   echo "(i<sub>face</sub>,j<sub>face</sub>)=("${ilof}","${jlof}")</br>"
+   echo "(Lon<sub>E</sub>,Lat)=("$llstr_bl")"
    echo "</td>"
    echo "<td>"
    echo "&nbsp;"
    echo "</td>"
    echo "<td>"
    echo "LLC Face "${fn}"</br>"
-   echo "(i<sub>face</sub>,j<sub>face</sub>)=("${ihif}","${jlof}")"
+   echo "(i<sub>face</sub>,j<sub>face</sub>)=("${ihif}","${jlof}")</br>"
+   echo "(Lon<sub>E</sub>,Lat)=("$llstr_br")"
    echo "</td>"
    echo "</tr>"
+
+   echo "</table>"
+   echo "</div>"
 
    echo "</body>"
    echo "</html>"
@@ -184,4 +197,3 @@ for fn in $(seq 1 5); do
   done
  done
 done
-echo "</table>"
