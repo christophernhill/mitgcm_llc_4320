@@ -17,11 +17,14 @@ cat <<'EOF'
     padding: 0;
     margin:  0;
   }
+.cell_image{
+ width: 100%;
+}
 </style>
 </head>
 EOF
 
-echo "<body>"
+echo "<body width=\"95%\">"
 echo "<table>"
 echo "<tr>"
 
@@ -31,14 +34,17 @@ echo "<table>"
 n0=93;
 for j in $(seq 0 15); do
  echo "<tr>"
-  echo "<td> <img src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
  echo "</tr>"
 done
 for j in $(seq 0 23); do
  echo "<tr>"
  for i in $(seq 0  3); do
   fsuf=`printf "%3.3d" $(( ${i} + ${n0} ))`
-  echo "<td> <a href=\"subpanel1080x540_llc4320_map_${fsuf}.html\"><img src=\"subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
+  echo "<td> <a href=\"subpanel1080x540_llc4320_map_${fsuf}.html\"><img class=\"cell_image\" src=\"subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
  done
  echo "</tr>"
  n0=$(($n0-4))
@@ -53,14 +59,17 @@ echo "<table>"
 n0=221;
 for j in $(seq 0 7); do
  echo "<tr>"
-  echo "<td> <img src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
  echo "</tr>"
 done
 for j in $(seq 0 31); do
  echo "<tr>"
  for i in $(seq 0  3); do
   fsuf=`printf "%3.3d" $(( ${i} + ${n0} ))`
-  echo "<td> <a href=\"subpanel1080x540_llc4320_map_${fsuf}.html\"><img src=\"subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
+  echo "<td> <a href=\"subpanel1080x540_llc4320_map_${fsuf}.html\"><img class=\"cell_image\" src=\"subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
  done
  echo "</tr>"
  n0=$(($n0-4))
@@ -77,14 +86,25 @@ for j in $(seq 0 15); do
  echo "<tr>"
  for i in $(seq 0  11); do
   fsuf=`printf "%3.3d" $(( ${i} + ${n0} ))`
-  echo "<td> <a href=\"subpanel1080x540_llc4320_map_${fsuf}.html\"><img src=\"subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
+  echo "<td> <a href=\"subpanel1080x540_llc4320_map_${fsuf}.html\"><img class=\"cell_image\" src=\"subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
  done
  echo "</tr>"
  n0=$(($n0-12))
 done
 for j in $(seq 0 23); do
  echo "<tr>"
-  echo "<td> <img src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
+  echo "<td> <img class=\"cell_image\" src=\"white_pad.jpeg\"> </td>"
  echo "</tr>"
 done
 # </tr>
