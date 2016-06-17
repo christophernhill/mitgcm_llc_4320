@@ -27,8 +27,12 @@ PLOT_BATHY_CMD_PATH=/get_subtile/matlab_make_tilemap/plot_bathy.m
 MAKE_TILE_JPEG_CMD_PATH=/get_subtile/make_tilemap_webpage/mk_panel_jpegs.sh
 MAKE_THUMBS_CMD_PATH=/get_subtile/make_tilemap_webpage/mk_thumbs.sh
 MAKE_HTML_CMD_PATH=/get_subtile/make_tilemap_webpage/mk_html.sh
+MAKE_WPTABLE_CMD=/get_subtile/make_tilemap_webpage/mk_wp_table.sh
 GET_LL_CMD_PATH=/get_subtile/make_tilemap_webpage/llcfijtoxcyc.sh
 HTML_OUT=$(OUTPUT_DIR)/x.html
+WPTABLE_OUT=$(OUTPUT_DIR)/wptable.html
+WP_IMG_DIR=/wp-content/uploads/2016/06/
+WP_TILE_PAGE=/index.php/home/fetch-output/single-tile-fetch/
 
 default: 
 	@ echo "Generate tiled .html file"
@@ -41,6 +45,7 @@ default:
 	@ echo "make thumbs              - Run Netpbm commands to create thumbnail tile jpeg images."
 	@ echo "make html                - Run commands to create html table layout with hyperlinks."
 	@ echo "make all                 - Run all commands in sqeuence."
+	@ echo "Note - To copy WP table to server scp ../../../output/wptable.html  llc4320mitgcm@llc4320.mitgcm.org:php_includes/master_tile_layout.php"
 
 all: 
 	make subtile_coords.jpeg
@@ -58,5 +63,18 @@ tile_jpegs:
 thumbs:
 	idir=$(OUTPUT_DIR) odir=$(OUTPUT_DIR) $(SRC_DIR)$(MAKE_THUMBS_CMD_PATH)
 
-html:
-	llgetcmd=$(SRC_DIR)$(GET_LL_CMD_PATH) gdir=$(GRID_INPUT_DIR) idir=$(OUTPUT_DIR) odir=$(OUTPUT_DIR) $(SRC_DIR)$(MAKE_HTML_CMD_PATH) > $(HTML_OUT)
+html: html_files wp_files
+html_files:
+	llgetcmd=$(SRC_DIR)$(GET_LL_CMD_PATH) \
+        gdir=$(GRID_INPUT_DIR)                \
+        idir=$(OUTPUT_DIR)                    \
+        odir=$(OUTPUT_DIR)                    \
+        $(SRC_DIR)$(MAKE_HTML_CMD_PATH) > $(HTML_OUT)
+wp_files:
+	llgetcmd=$(SRC_DIR)$(GET_LL_CMD_PATH) \
+        gdir=$(GRID_INPUT_DIR)                \
+        idir=$(OUTPUT_DIR)                    \
+        odir=$(OUTPUT_DIR)                    \
+        wpimgdir=$(WP_IMG_DIR)                \
+        wptilepage=$(WP_TILE_PAGE)            \
+        $(SRC_DIR)$(MAKE_WPTABLE_CMD) > $(WPTABLE_OUT)
