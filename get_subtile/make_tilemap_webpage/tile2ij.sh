@@ -83,10 +83,10 @@ echo "# ihi = "${ihi}
 echo "# jlo = "${jlo}
 echo "# jhi = "${jhi}
 
-echo $ilo, $jlo " # bl "
-echo $ihi, $jlo " # br "
-echo $ihi, $jhi " # tr "
-echo $ilo, $jhi " # tl "
+echo $ilo " # ilo "
+echo $ihi " # ihi "
+echo $jlo " # jlo "
+echo $jhi " # jhi "
 
 # tnox=$(( ${tno}/
 
