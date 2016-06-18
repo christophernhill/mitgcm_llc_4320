@@ -33,6 +33,7 @@ HTML_OUT=$(OUTPUT_DIR)/x.html
 WPTABLE_OUT=$(OUTPUT_DIR)/wptable.html
 WP_IMG_DIR=/wp-content/uploads/2016/06/
 WP_TILE_PAGE=/index.php/home/fetch-output/single-tile-fetch/
+T2IJ_CMD=/get_subtile/make_tilemap_webpage/tile2ij.sh
 
 default: 
 	@ echo "Generate tiled .html file"
@@ -77,4 +78,5 @@ wp_files:
         odir=$(OUTPUT_DIR)                    \
         wpimgdir=$(WP_IMG_DIR)                \
         wptilepage=$(WP_TILE_PAGE)            \
+        t2ijcmd=$(SRC_DIR)$(T2IJ_CMD)         \
         $(SRC_DIR)$(MAKE_WPTABLE_CMD) > $(WPTABLE_OUT)

@@ -7,7 +7,7 @@
 # 30.657W, 2.453S
 #
 # example
-# ./make_tilemap_webpage/llcijtoxcyc.sh ../../../grid 4032 1 10 1 2> /dev/null | tail -2 | head -1 | awk '{print $2}'
+# ./make_tilemap_webpage/llcfijtoxcyc.sh ../../../grid 4032 1 10 1 2> /dev/null | tail -2 | head -1 | awk '{print $2}'
 #
 usage=" gridfiledir llcsize facenumber iface jface"
 

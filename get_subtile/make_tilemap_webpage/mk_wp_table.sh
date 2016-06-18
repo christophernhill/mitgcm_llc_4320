@@ -21,6 +21,8 @@ for j in $(seq 0 23); do
  echo "<tr>"
  for i in $(seq 0  3); do
   fsuf=`printf "%3.3d" $(( ${i} + ${n0} ))`
+  fnum=`echo ${fsuf} | sed s'/[0]+\(.*\)/\1/'`
+  # tijvals=( `${t2ijcmd} ${fnum} | sed s/'\(.*\)#.*/\1/'  | grep '[0-9]' `)
   echo "<td> <a href=\"${wptilepage}?tnum=${fsuf}\"><img class=\"cell_image\" src=\"${wpimgdir}subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
  done
  echo "</tr>"
