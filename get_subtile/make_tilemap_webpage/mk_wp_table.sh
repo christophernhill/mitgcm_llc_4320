@@ -35,7 +35,7 @@ for j in $(seq 0 23); do
   c_tr=`${llgetcmd} ${gdir} ${nx} ${fno} ${ihi} ${jhi} | tail -1`
   c_br=`${llgetcmd} ${gdir} ${nx} ${fno} ${ihi} ${jlo} | tail -1`
   c_bl=`${llgetcmd} ${gdir} ${nx} ${fno} ${ilo} ${jlo} | tail -1`
-  echo "<td> <a href=\"${wptilepage}?tnum=${fsuf}&c_tl=${c_tl}&c_tr=${c_tr}&c_br=${c_br}&c_bl=${c_bl}&ilof=${tijvals[0]}&ihif=${tijvals[1]}&jlof=${tijvals[2]}&jhif=${tijvals[3]}\"><img class=\"cell_image\" src=\"${wpimgdir}subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
+  echo "<td> <a href=\"${wptilepage}?tnum=${fsuf}&fno=${fno}&c_tl=${c_tl}&c_tr=${c_tr}&c_br=${c_br}&c_bl=${c_bl}&ilof=${tijvals[0]}&ihif=${tijvals[1]}&jlof=${tijvals[2]}&jhif=${tijvals[3]}\"><img class=\"cell_image\" src=\"${wpimgdir}subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
  done
  echo "</tr>"
  n0=$(($n0-4))
@@ -72,7 +72,7 @@ for j in $(seq 0 31); do
   c_tr=`${llgetcmd} ${gdir} ${nx} ${fno} ${ihi} ${jhi} | tail -1`
   c_br=`${llgetcmd} ${gdir} ${nx} ${fno} ${ihi} ${jlo} | tail -1`
   c_bl=`${llgetcmd} ${gdir} ${nx} ${fno} ${ilo} ${jlo} | tail -1`
-  echo "<td> <a href=\"${wptilepage}?tnum=${fsuf}&c_tl=${c_tl}&c_tr=${c_tr}&c_br=${c_br}&c_bl=${c_bl}&ilof=${tijvals[0]}&ihif=${tijvals[1]}&jlof=${tijvals[2]}&jhif=${tijvals[3]}\"><img class=\"cell_image\" src=\"${wpimgdir}subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
+  echo "<td> <a href=\"${wptilepage}?tnum=${fsuf}&fno=${fno}&c_tl=${c_tl}&c_tr=${c_tr}&c_br=${c_br}&c_bl=${c_bl}&ilof=${tijvals[0]}&ihif=${tijvals[1]}&jlof=${tijvals[2]}&jhif=${tijvals[3]}\"><img class=\"cell_image\" src=\"${wpimgdir}subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
  done
  echo "</tr>"
  n0=$(($n0-4))
@@ -100,7 +100,7 @@ for j in $(seq 0 15); do
   c_tr=`${llgetcmd} ${gdir} ${nx} ${fno} ${ihi} ${jhi} | tail -1`
   c_br=`${llgetcmd} ${gdir} ${nx} ${fno} ${ihi} ${jlo} | tail -1`
   c_bl=`${llgetcmd} ${gdir} ${nx} ${fno} ${ilo} ${jlo} | tail -1`
-  echo "<td> <a href=\"${wptilepage}?tnum=${fsuf}&c_tl=${c_tl}&c_tr=${c_tr}&c_br=${c_br}&c_bl=${c_bl}&ilof=${tijvals[0]}&ihif=${tijvals[1]}&jlof=${tijvals[2]}&jhif=${tijvals[3]}\"><img class=\"cell_image\" src=\"${wpimgdir}subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
+  echo "<td> <a href=\"${wptilepage}?tnum=${fsuf}&fno=${fno}&c_tl=${c_tl}&c_tr=${c_tr}&c_br=${c_br}&c_bl=${c_bl}&ilof=${tijvals[0]}&ihif=${tijvals[1]}&jlof=${tijvals[2]}&jhif=${tijvals[3]}\"><img class=\"cell_image\" src=\"${wpimgdir}subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
  done
  echo "</tr>"
  n0=$(($n0-12))
