@@ -87,6 +87,7 @@ echo $ilo " # ilo "
 echo $ihi " # ihi "
 echo $jlo " # jlo "
 echo $jhi " # jhi "
+echo $fno " # fno "
 
 # tnox=$(( ${tno}/
 

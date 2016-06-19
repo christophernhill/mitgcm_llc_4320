@@ -1,5 +1,7 @@
 #!/bin/bash
 
+nx=4320;
+
 cd ${odir}
 
 echo "<table>"
@@ -23,7 +25,17 @@ for j in $(seq 0 23); do
   fsuf=`printf "%3.3d" $(( ${i} + ${n0} ))`
   fnum=`echo ${fsuf} | sed s'/[0]*\(.*\)/\1/'`
   tijvals=( `${t2ijcmd} ${fnum} | sed s/'\(.*\)#.*/\1/'  | grep '[0-9]' `)
-  echo "<td> <a href=\"${wptilepage}?tnum=${fsuf}&ilof=${tijvals[0]}&ihif=${tijvals[1]}&jlof=${tijvals[2]}&jhif=${tijvals[3]}\"><img class=\"cell_image\" src=\"${wpimgdir}subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
+  # ./make_tilemap_webpage/llcfijtoxcyc.sh ../../../grid 4320 1 4320 8640
+  ilo=${tijvals[0]}
+  ihi=${tijvals[1]}
+  jlo=${tijvals[2]}
+  jhi=${tijvals[3]}
+  fno=${tijvals[4]}
+  c_tl=`${llgetcmd} ${gdir} ${nx} ${fno} ${ilo} ${jhi} | tail -1`
+  c_tr=`${llgetcmd} ${gdir} ${nx} ${fno} ${ihi} ${jhi} | tail -1`
+  c_br=`${llgetcmd} ${gdir} ${nx} ${fno} ${ihi} ${jlo} | tail -1`
+  c_bl=`${llgetcmd} ${gdir} ${nx} ${fno} ${ilo} ${jlo} | tail -1`
+  echo "<td> <a href=\"${wptilepage}?tnum=${fsuf}&c_tl=${c_tl}&c_tr=${c_tr}&c_br=${c_br}&c_bl=${c_bl}&ilof=${tijvals[0]}&ihif=${tijvals[1]}&jlof=${tijvals[2]}&jhif=${tijvals[3]}\"><img class=\"cell_image\" src=\"${wpimgdir}subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
  done
  echo "</tr>"
  n0=$(($n0-4))
@@ -51,7 +63,16 @@ for j in $(seq 0 31); do
   fsuf=`printf "%3.3d" $(( ${i} + ${n0} ))`
   fnum=`echo ${fsuf} | sed s'/[0]*\(.*\)/\1/'`
   tijvals=( `${t2ijcmd} ${fnum} | sed s/'\(.*\)#.*/\1/'  | grep '[0-9]' `)
-  echo "<td> <a href=\"${wptilepage}?tnum=${fsuf}&ilof=${tijvals[0]}&ihif=${tijvals[1]}&jlof=${tijvals[2]}&jhif=${tijvals[3]}\"><img class=\"cell_image\" src=\"${wpimgdir}subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
+  ilo=${tijvals[0]}
+  ihi=${tijvals[1]}
+  jlo=${tijvals[2]}
+  jhi=${tijvals[3]}
+  fno=${tijvals[4]}
+  c_tl=`${llgetcmd} ${gdir} ${nx} ${fno} ${ilo} ${jhi} | tail -1`
+  c_tr=`${llgetcmd} ${gdir} ${nx} ${fno} ${ihi} ${jhi} | tail -1`
+  c_br=`${llgetcmd} ${gdir} ${nx} ${fno} ${ihi} ${jlo} | tail -1`
+  c_bl=`${llgetcmd} ${gdir} ${nx} ${fno} ${ilo} ${jlo} | tail -1`
+  echo "<td> <a href=\"${wptilepage}?tnum=${fsuf}&c_tl=${c_tl}&c_tr=${c_tr}&c_br=${c_br}&c_bl=${c_bl}&ilof=${tijvals[0]}&ihif=${tijvals[1]}&jlof=${tijvals[2]}&jhif=${tijvals[3]}\"><img class=\"cell_image\" src=\"${wpimgdir}subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
  done
  echo "</tr>"
  n0=$(($n0-4))
@@ -70,7 +91,16 @@ for j in $(seq 0 15); do
   fsuf=`printf "%3.3d" $(( ${i} + ${n0} ))`
   fnum=`echo ${fsuf} | sed s'/[0]*\(.*\)/\1/'`
   tijvals=( `${t2ijcmd} ${fnum} | sed s/'\(.*\)#.*/\1/'  | grep '[0-9]' `)
-  echo "<td> <a href=\"${wptilepage}?tnum=${fsuf}&ilof=${tijvals[0]}&ihif=${tijvals[1]}&jlof=${tijvals[2]}&jhif=${tijvals[3]}\"><img class=\"cell_image\" src=\"${wpimgdir}subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
+  ilo=${tijvals[0]}
+  ihi=${tijvals[1]}
+  jlo=${tijvals[2]}
+  jhi=${tijvals[3]}
+  fno=${tijvals[4]}
+  c_tl=`${llgetcmd} ${gdir} ${nx} ${fno} ${ilo} ${jhi} | tail -1`
+  c_tr=`${llgetcmd} ${gdir} ${nx} ${fno} ${ihi} ${jhi} | tail -1`
+  c_br=`${llgetcmd} ${gdir} ${nx} ${fno} ${ihi} ${jlo} | tail -1`
+  c_bl=`${llgetcmd} ${gdir} ${nx} ${fno} ${ilo} ${jlo} | tail -1`
+  echo "<td> <a href=\"${wptilepage}?tnum=${fsuf}&c_tl=${c_tl}&c_tr=${c_tr}&c_br=${c_br}&c_bl=${c_bl}&ilof=${tijvals[0]}&ihif=${tijvals[1]}&jlof=${tijvals[2]}&jhif=${tijvals[3]}\"><img class=\"cell_image\" src=\"${wpimgdir}subpanel1080x540_llc4320_map_${fsuf}_thumb.jpeg\"></a> </td>"
  done
  echo "</tr>"
  n0=$(($n0-12))
