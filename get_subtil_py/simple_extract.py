@@ -119,6 +119,8 @@ with open(filename,'rb') as f:
  print array
 ycArray=array
 
+sys.exit()
+
 # Now try plotting
 
 import matplotlib.pyplot as plt
