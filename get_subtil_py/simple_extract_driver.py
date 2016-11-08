@@ -17,8 +17,9 @@ dList=['./',                                              \
 
 # Read tile for the given tile, field code and iterantion number and read
 # basic grid information for tile.
-tNo=360
-kLev=10
+tNo=360  # Gulf of Mexico
+# tNo=310  # Alaska coast
+kLev=30
 itNo=486864
 fCode='Theta'
 fldarr,fNameRead = mInfo.getStdTileXY(tNo,fCode,itNo=itNo,kLev=kLev,dList=dList)
