@@ -15,12 +15,35 @@ dList=['./',                                              \
        '/nobackupp2/dmenemen/llc_4320/MITgcm/run_485568', \
        '/nobackupp2/dmenemen/llc_4320/grid']
 
+itList=[485568, \
+        485712, \
+        485856, \
+        486000, \
+        486144, \
+        486288, \
+        486432, \
+        486576, \
+        486720, \
+        486864, \
+        487008, \
+        487152, \
+        487296, \
+        487440, \
+        487584, \
+        487728, \
+        487872, \
+        488016, \
+        488160, \
+        488304]
+
+
 # Read tile for the given tile, field code and iterantion number and read
 # basic grid information for tile.
 tNo=360  # Gulf of Mexico
 # tNo=310  # Alaska coast
-kLev=30
+kLev=1
 itNo=486864
+itNo=itList[16]
 fCode='Theta'
 fldarr,fNameRead = mInfo.getStdTileXY(tNo,fCode,itNo=itNo,kLev=kLev,dList=dList)
 xcarr, fNameRead = mInfo.getStdTileXY(tNo,'XC',dList=dList)

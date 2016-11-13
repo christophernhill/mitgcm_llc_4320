@@ -32,7 +32,7 @@ class llcTMesh:
              this.fNTx[2]*this.fNTy[2]
   this.fT0[4]=this.fT0[3] + \
              this.fNTx[3]*this.fNTy[3]
-  this.skipK=this.tx*this.ty*13
+  this.skipK=nx*ny*13
 
  def getTileF(this,tNo):
   # Get the face that a tile sits in
