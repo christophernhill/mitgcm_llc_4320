@@ -64,7 +64,7 @@ itList=[486864, \
         488016, \
         488160, \
         488304]
-itList=[486864]
+# itList=[486864]
 
 
 # List of 3d fields to read
@@ -73,7 +73,8 @@ fCodeList3d=['Theta','U','V','Salt']
 # Levels to read for 3d
 kLevList3d=[1,2,3,4,5,10,30]
 kLevList3d=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
-kLevList3d=[1]
+kLevList3d=np.arange(1,91)
+# kLevList3d=[1]
 
 # List of 2d fields to read
 fCodeList2d=['Eta']
@@ -86,8 +87,8 @@ fCodeList2d=['Eta']
 # 287,288,300,299 - Hawaii and North and East
 # pNoList=[360,310,372,384,396,408,69,65,216,287,288,300,299]
 # pNoList=[216]
-# pNoList=[372,384,396,408,69,65]
-pNoList=[69,65]
+pNoList=[372,384,396,408,69,65,216]
+# pNoList=[69,65]
 
 
 # Read tile for the given tile, field code and iterantion number and read
