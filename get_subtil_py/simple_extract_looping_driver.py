@@ -64,13 +64,16 @@ itList=[486864, \
         488016, \
         488160, \
         488304]
+itList=[486864]
 
 
 # List of 3d fields to read
-fCodeList3d=['Theta','U','V']
+fCodeList3d=['Theta','U','V','Salt']
 
 # Levels to read for 3d
 kLevList3d=[1,2,3,4,5,10,30]
+kLevList3d=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
+kLevList3d=[1]
 
 # List of 2d fields to read
 fCodeList2d=['Eta']
@@ -78,10 +81,14 @@ fCodeList2d=['Eta']
 # List of patches
 # 360 - Gulf of Mexico
 # 310 - Gulf of Alaska
-# 372,384,396,408 - POSYDON acoustic field expt Atlantic
+# 372,384,396,408 ,69,65 - POSYDON acoustic field expt Atlantic
 # 216 - Arctic Beaufort Sea
 # 287,288,300,299 - Hawaii and North and East
-pNoList=[360,310,372,384,396,408,216,287,288,300,299]
+# pNoList=[360,310,372,384,396,408,69,65,216,287,288,300,299]
+# pNoList=[216]
+# pNoList=[372,384,396,408,69,65]
+pNoList=[69,65]
+
 
 # Read tile for the given tile, field code and iterantion number and read
 # basic grid information for tile.
@@ -128,10 +135,11 @@ for itNo in itList:
      f.close()
 
 for pNo in pNoList:
- xcarr, fNameRead = mInfo.getStdTileXY(pNo,'XC',dList=dList)
- ycarr, fNameRead = mInfo.getStdTileXY(pNo,'YC',dList=dList)
- xgarr, fNameRead = mInfo.getStdTileXY(pNo,'XG',dList=dList)
- ygarr, fNameRead = mInfo.getStdTileXY(pNo,'YG',dList=dList)
+ xcarr,    fNameRead = mInfo.getStdTileXY(pNo,'XC',dList=dList)
+ ycarr,    fNameRead = mInfo.getStdTileXY(pNo,'YC',dList=dList)
+ xgarr,    fNameRead = mInfo.getStdTileXY(pNo,'XG',dList=dList)
+ ygarr,    fNameRead = mInfo.getStdTileXY(pNo,'YG',dList=dList)
+ deptharr, fNameRead = mInfo.getStdTileXY(pNo,'Depth',dList=dList)
  # Create output directories as needed (grid only has tile directories)
  dOutPath=createODir(odirRoots,pNo,None,None)
  # Write grid arrays
@@ -148,8 +156,8 @@ for pNo in pNoList:
  # YC
  if ycarr is not None:
   b=bytearray(ycarr.astype('>f4').tobytes(order='F'))
-  fDir="%s/%s/p_%3.3d/grid"%(dOutPath,'tiled_output',tNo)
-  ffName="YC.p_%4.4d.data"%(tNo)
+  fDir="%s/%s/p_%3.3d/grid"%(dOutPath,'tiled_output',pNo)
+  ffName="YC.p_%4.4d.data"%(pNo)
   fName="%s/%s"%(fDir,ffName)
   f=file(fName,'wb')
   f.write(b)
@@ -158,8 +166,8 @@ for pNo in pNoList:
  # XG
  if xgarr is not None:
   b=bytearray(xgarr.astype('>f4').tobytes(order='F'))
-  fDir="%s/%s/p_%3.3d/grid"%(dOutPath,'tiled_output',tNo)
-  ffName="XG.p_%4.4d.data"%(tNo)
+  fDir="%s/%s/p_%3.3d/grid"%(dOutPath,'tiled_output',pNo)
+  ffName="XG.p_%4.4d.data"%(pNo)
   fName="%s/%s"%(fDir,ffName)
   f=file(fName,'wb')
   f.write(b)
@@ -168,8 +176,66 @@ for pNo in pNoList:
  # YG
  if ygarr is not None:
   b=bytearray(ygarr.astype('>f4').tobytes(order='F'))
-  fDir="%s/%s/p_%3.3d/grid"%(dOutPath,'tiled_output',tNo)
-  ffName="YG.p_%4.4d.data"%(tNo)
+  fDir="%s/%s/p_%3.3d/grid"%(dOutPath,'tiled_output',pNo)
+  ffName="YG.p_%4.4d.data"%(pNo)
+  fName="%s/%s"%(fDir,ffName)
+  f=file(fName,'wb')
+  f.write(b)
+
+ # Depth
+ if deptharr is not None:
+  b=bytearray(deptharr.astype('>f4').tobytes(order='F'))
+  fDir="%s/%s/p_%3.3d/grid"%(dOutPath,'tiled_output',pNo)
+  ffName="Depth.p_%4.4d.data"%(pNo)
+  fName="%s/%s"%(fDir,ffName)
+  f=file(fName,'wb')
+  f.write(b)
+
+# Now get vertical grid spacing info
+# % ls -altr /nobackupp2/dmenemen/llc_4320/grid/DRC* /nobackupp2/dmenemen/llc_4320/grid/RC* /nobackupp2/dmenemen/llc_4320/grid/DRF* /nobackupp2/dmenemen/llc_4320/grid/RF*
+# -rw-r--r-- 1 dmenemen g26209 144 Jan 18  2014 /nobackupp2/dmenemen/llc_4320/grid/DRF.meta
+# -rw-r--r-- 1 dmenemen g26209 360 Jan 18  2014 /nobackupp2/dmenemen/llc_4320/grid/DRF.data
+# -rw-r--r-- 1 dmenemen g26209 144 Jan 18  2014 /nobackupp2/dmenemen/llc_4320/grid/DRC.meta
+# -rw-r--r-- 1 dmenemen g26209 364 Jan 18  2014 /nobackupp2/dmenemen/llc_4320/grid/DRC.data
+# -rw-r--r-- 1 dmenemen g26209 144 Jan 18  2014 /nobackupp2/dmenemen/llc_4320/grid/RC.meta
+# -rw-r--r-- 1 dmenemen g26209 360 Jan 18  2014 /nobackupp2/dmenemen/llc_4320/grid/RC.data
+# -rw-r--r-- 1 dmenemen g26209 144 Jan 18  2014 /nobackupp2/dmenemen/llc_4320/grid/RF.meta
+# -rw-r--r-- 1 dmenemen g26209 364 Jan 18  2014 /nobackupp2/dmenemen/llc_4320/grid/RF.data
+for pNo in pNoList:
+ rfarr,    fNameRead = mInfo.getStdFile('RF',dList=dList)
+ drfarr,   fNameRead = mInfo.getStdFile('DRF',dList=dList)
+ rcarr,    fNameRead = mInfo.getStdFile('RC',dList=dList)
+ drcarr,   fNameRead = mInfo.getStdFile('DRC',dList=dList)
+ dOutPath=createODir(odirRoots,pNo,None,None)
+
+ if rfarr is not None:
+  b=bytearray(rfarr.astype('>f4').tobytes(order='F'))
+  fDir="%s/%s/p_%3.3d/grid"%(dOutPath,'tiled_output',pNo)
+  ffName="RF.p_%4.4d.data"%(pNo)
+  fName="%s/%s"%(fDir,ffName)
+  f=file(fName,'wb')
+  f.write(b)
+
+ if drfarr is not None:
+  b=bytearray(drfarr.astype('>f4').tobytes(order='F'))
+  fDir="%s/%s/p_%3.3d/grid"%(dOutPath,'tiled_output',pNo)
+  ffName="DRF.p_%4.4d.data"%(pNo)
+  fName="%s/%s"%(fDir,ffName)
+  f=file(fName,'wb')
+  f.write(b)
+
+ if rcarr is not None:
+  b=bytearray(rcarr.astype('>f4').tobytes(order='F'))
+  fDir="%s/%s/p_%3.3d/grid"%(dOutPath,'tiled_output',pNo)
+  ffName="RC.p_%4.4d.data"%(pNo)
+  fName="%s/%s"%(fDir,ffName)
+  f=file(fName,'wb')
+  f.write(b)
+
+ if drcarr is not None:
+  b=bytearray(drcarr.astype('>f4').tobytes(order='F'))
+  fDir="%s/%s/p_%3.3d/grid"%(dOutPath,'tiled_output',pNo)
+  ffName="DRC.p_%4.4d.data"%(pNo)
   fName="%s/%s"%(fDir,ffName)
   f=file(fName,'wb')
   f.write(b)
