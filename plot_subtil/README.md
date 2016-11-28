@@ -1,1 +1,1 @@
-Example python code to plot fields for subtile
+Example code to plot fields for subtile
