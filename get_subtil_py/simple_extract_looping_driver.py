@@ -64,11 +64,17 @@ itList=[486864, \
         488016, \
         488160, \
         488304]
-# itList=[486864]
+itList=[486864]
+it0=486864;
+icount=100;
+# icount=3;
+istride=144;
+itList=range(it0,it0+icount*istride+1,istride)
 
 
 # List of 3d fields to read
-fCodeList3d=['Theta','U','V','Salt']
+fCodeList3d=['Theta','U','V','Salt','W']
+# fCodeList3d=['Theta']
 
 # Levels to read for 3d
 kLevList3d=[1,2,3,4,5,10,30]
@@ -77,7 +83,7 @@ kLevList3d=np.arange(1,91)
 # kLevList3d=[1]
 
 # List of 2d fields to read
-fCodeList2d=['Eta']
+fCodeList2d=['Eta','oceTAUX','oceTAUY','PhiBot','KPPhbl','oceFWflx','oceQnet','oceQsw','oceSflux']
 
 # List of patches
 # 360 - Gulf of Mexico
@@ -89,6 +95,9 @@ fCodeList2d=['Eta']
 # pNoList=[216]
 pNoList=[372,384,396,408,69,65,216]
 # pNoList=[69,65]
+
+# Samoan Passage (9.5S,168.75W)
+pNoList=[278]
 
 
 # Read tile for the given tile, field code and iterantion number and read
