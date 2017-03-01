@@ -1,10 +1,12 @@
 #
 # Settings describing locations of key files and names of key end points
 #
-RAW_OUTPUT_DIRECTORIES:
+RAW_OUTPUT_DIRECTORY_ROOTS:
  - "/nobackupp8/dmenemen/llc/llc_4320/MITgcm/run"
  - "/nobackupp2/dmenemen/llc_4320/MITgcm/run_485568"
 
 RAW_OUTPUT_DIRECTORY_LISTING_FILES:
  - "d1.fl"
  - "d2.fl"
+
+
