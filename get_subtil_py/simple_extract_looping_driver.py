@@ -4,6 +4,7 @@ import errno
 import numpy as np
 import llcTMesh
 
+
 def createODir(odirRoots,tNo,fCode,itNo):
  # Create output directory if needed
  # Output directory pattern p_{tNo}/grid p_{tNo}/itNo/fCode/p_{tNo}.fCode.{itNo}.k_{kLev}.data
@@ -140,6 +141,14 @@ pNoList=[372,384,396,408,69,65,216]
 
 # Samoan Passage (9.5S,168.75W)
 pNoList=[278]
+
+if os.getenv('LLC_TEXTRACT_TNO') != None:
+ tNoStr=os.environ['LLC_TEXTRACT_TNO']
+ try:
+  pNoList=[int(tNoStr)]
+ except ValuerError:
+  raise ValueError('Environment variable LLC_TEXTRACT_TNO value is not an integer')
+
 
 
 # Read tile for the given tile, field code and iterantion number and read
