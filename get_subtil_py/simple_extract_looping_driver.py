@@ -6,7 +6,7 @@ import llcTMesh
 
 def createODir(odirRoots,tNo,fCode,itNo):
  # Create output directory if needed
- # Output directory pattern p_{tNo}/grid p_{tNo}/fCode/itNo/p_{tNo}.fCode.{itNo}.k_{kLev}.data
+ # Output directory pattern p_{tNo}/grid p_{tNo}/itNo/fCode/p_{tNo}.fCode.{itNo}.k_{kLev}.data
  dOutPath=None
  for d in odirRoots:
   if os.path.exists(d):
@@ -23,8 +23,8 @@ def createODir(odirRoots,tNo,fCode,itNo):
  dList.append( "%s/%s/p_%3.3d"%(dOutPath,'tiled_output',tNo) )
  dList.append( "%s/%s/p_%3.3d/grid"%(dOutPath,'tiled_output',tNo) )
  if fCode is not None:
-  dList.append( "%s/%s/p_%3.3d/%s"%(dOutPath,'tiled_output',tNo,fCode) )
-  dList.append( "%s/%s/p_%3.3d/%s/i_%15.15d"%(dOutPath,'tiled_output',tNo,fCode,itNo) )
+  dList.append( "%s/%s/p_%3.3d/i_%15.15d"%(dOutPath,'tiled_output',tNo,itNo) )
+  dList.append( "%s/%s/p_%3.3d/i_%15.15d/%s"%(dOutPath,'tiled_output',tNo,itNo,fCode) )
  # print dList
  for d in dList:
   if not os.path.exists(d):
@@ -52,24 +52,66 @@ dList=['./',                                              \
 # Places to write output (write to first one found)
 odirRoots=['/nobackupp8/cnhill1/llc_4320_tiles','.']
 
+na=len(sys.argv)
+if na > 1:
+ argList=sys.argv[1].split(",")
+ if len(argList) == 3:
+  a0=argList[0]
+  a1=argList[1]
+  a2=argList[2]
+  print a0,a1,a2
+  try:
+   a0i=int(a0)
+  except ValuerError:
+   raise ValueError('argument 1 is not an integer')
+  try:
+   a1i=int(a1)
+  except ValuerError:
+   raise ValueError('argument 2 is not an integer')
+  try:
+   a2i=int(a2)
+  except ValuerError:
+   raise ValueError('argument 3 is not an integer')
+ 
+  if a0i % 144 != 0:
+   print a0i, ' is not a multiple of 144.'
+   exit()
+
+  if a2i != 144:
+   print a2i, ' is not 144.'
+   exit()
+
+
+  ar=range(a0i,a1i,a2i)
+  if len(ar) > 3:
+   for it1,it2 in [ (ar[i], ar[i+2]) for i in range(0,len(ar)-2,3) ]:
+    print "python ",sys.argv[0], ' ', "%d,%d,144"%(it1,it2)
+ else:
+  exit()
+
+if len(ar) != 2:
+ exit()
+else:
+ itList=ar
+
 # List of iterations to read
-itList=[486864, \
-        487008, \
-        487152, \
-        487296, \
-        487440, \
-        487584, \
-        487728, \
-        487872, \
-        488016, \
-        488160, \
-        488304]
-itList=[486864]
-it0=486864;
-icount=100;
-# icount=3;
-istride=144;
-itList=range(it0,it0+icount*istride+1,istride)
+##itList=[486864, \
+##        487008, \
+##        487152, \
+##        487296, \
+##        487440, \
+##        487584, \
+##        487728, \
+##        487872, \
+##        488016, \
+##        488160, \
+##        488304]
+##itList=[486864,487008]
+## it0=486864;
+## icount=100;
+## # icount=3;
+## istride=144;
+## itList=range(it0,it0+icount*istride+1,istride)
 
 
 # List of 3d fields to read
@@ -115,7 +157,7 @@ for itNo in itList:
     # Write field array
     if fldarr is not None:
      b=bytearray(fldarr.astype('>f4').tobytes(order='F'))
-     fDir="%s/%s/p_%3.3d/%s/i_%15.15d"%(dOutPath,'tiled_output',tNo,fCode,itNo)
+     fDir="%s/%s/p_%3.3d/i_%15.15d/%s"%(dOutPath,'tiled_output',tNo,itNo,fCode)
      ffName="%s.%10.10d.p_%4.4d.k_%4.4d.data"%(fCode,itNo,tNo,kLev)
      fName="%s/%s"%(fDir,ffName)
      f=file(fName,'wb')
@@ -137,7 +179,7 @@ for itNo in itList:
     # Write field array
     if fldarr is not None:
      b=bytearray(fldarr.astype('>f4').tobytes(order='F'))
-     fDir="%s/%s/p_%3.3d/%s/i_%15.15d"%(dOutPath,'tiled_output',tNo,fCode,itNo)
+     fDir="%s/%s/p_%3.3d/i_%15.15d/%s"%(dOutPath,'tiled_output',tNo,itNo,fCode)
      ffName="%s.%10.10d.p_%4.4d.k_%4.4d.data"%(fCode,itNo,tNo,kLev)
      fName="%s/%s"%(fDir,ffName)
      f=file(fName,'wb')
