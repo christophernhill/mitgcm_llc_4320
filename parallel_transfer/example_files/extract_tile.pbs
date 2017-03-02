@@ -1,0 +1,27 @@
+#PBS -S /bin/bash
+#PBS -l select=1:ncpus=16:model=san
+#PBS -l walltime=00:60:00
+#PBS -q normal
+#PBS -j oe
+#PBS -m abe
+#PBS -M cnh@mit.edu
+
+module load python/2.7.10
+cd /home4/cnhill1/projects/get_alll_llc/python/mitgcm_llc_4320/get_subtil_py
+python  simple_extract_looping_driver.py   1358208,1358496,144 & </dev/null
+python  simple_extract_looping_driver.py   1358640,1358928,144 & </dev/null
+python  simple_extract_looping_driver.py   1359072,1359360,144 & </dev/null
+python  simple_extract_looping_driver.py   1359504,1359792,144 & </dev/null
+python  simple_extract_looping_driver.py   1359936,1360224,144 & </dev/null
+python  simple_extract_looping_driver.py   1360368,1360656,144 & </dev/null
+python  simple_extract_looping_driver.py   1360800,1361088,144 & </dev/null
+python  simple_extract_looping_driver.py   1361232,1361520,144 & </dev/null
+python  simple_extract_looping_driver.py   1361664,1361952,144 & </dev/null
+python  simple_extract_looping_driver.py   1362096,1362384,144 & </dev/null
+python  simple_extract_looping_driver.py   1362528,1362816,144 & </dev/null
+python  simple_extract_looping_driver.py   1362960,1363248,144 & </dev/null
+python  simple_extract_looping_driver.py   1363392,1363680,144 & </dev/null
+python  simple_extract_looping_driver.py   1363824,1364112,144 & </dev/null
+python  simple_extract_looping_driver.py   1364256,1364544,144 & </dev/null
+python  simple_extract_looping_driver.py   1364688,1364976,144 & </dev/null
+wait
