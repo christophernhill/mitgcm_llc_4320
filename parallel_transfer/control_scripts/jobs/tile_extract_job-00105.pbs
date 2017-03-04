@@ -1,0 +1,28 @@
+######tile_extract_job-00105.pbs
+#PBS -S /bin/bash
+#PBS -l select=1:ncpus=16:model=san
+#PBS -l walltime=00:60:00
+#PBS -q normal
+#PBS -j oe
+#PBS -m abe
+#PBS -M cnh@mit.edu
+module load python/2.7.10
+cd /home4/cnhill1/projects/get_alll_llc/python/mitgcm_llc_4320/get_subtil_py
+export LLC_TEXTRACT_TNO=299
+python simple_extract_looping_driver.py 736128,736417,144 &
+python simple_extract_looping_driver.py 736560,736849,144 &
+python simple_extract_looping_driver.py 736992,737281,144 &
+python simple_extract_looping_driver.py 737424,737713,144 &
+python simple_extract_looping_driver.py 737856,738145,144 &
+python simple_extract_looping_driver.py 738288,738577,144 &
+python simple_extract_looping_driver.py 738720,739009,144 &
+python simple_extract_looping_driver.py 739152,739441,144 &
+python simple_extract_looping_driver.py 739584,739873,144 &
+python simple_extract_looping_driver.py 740016,740305,144 &
+python simple_extract_looping_driver.py 740448,740737,144 &
+python simple_extract_looping_driver.py 740880,741169,144 &
+python simple_extract_looping_driver.py 741312,741601,144 &
+python simple_extract_looping_driver.py 741744,742033,144 &
+python simple_extract_looping_driver.py 742176,742465,144 &
+python simple_extract_looping_driver.py 742608,742897,144 &
+wait
