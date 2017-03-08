@@ -1,0 +1,8 @@
+# Config files for LLC extract
+
+# Command to log in to remote system
+remoteLoginCmd: "ssh -T -A -l cnh -i  ~/.ssh/id_rsa.pub eofe7.mit.edu ssh -T -A -p 20002 cnhill1@localhost"
+
+# Place to extract intermediate files to, before transfer
+remoteStoreDirRoot: /nobackupp8/cnhill1/llc_4320_tiles/tiled_output
+
